@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">My first Application</string>
+    <string name="meu_texto">Meu Texto abc 123</string>
+    <string name="imv">Imóveis</string>
+    <string name="Aut">Automóveis</string>
+    <string name="msg">Desconto de 5% ao Assinar esse Mês. Aproveite!</string>
+    <string name="Nov">Novidades</string>
+    <string name="Help">Precisa de Ajuda ?</string>
+    <string name="Contato">Entre em Contato</string>
+    <string name="Serv">Serviços</string>
+    <string name="Seg">Seguros XPTO</string>
+    <string name="Email">E-mail</string>
+</resources>
