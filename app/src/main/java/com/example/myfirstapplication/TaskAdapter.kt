@@ -29,6 +29,9 @@ class TaskAdapter(
         val task = tasks[position]
 
         with(holder.binding) {
+            // 1. DESLIGA o ouvinte antes de mexer na tela para evitar cliques fantasmas da rolagem
+            cbTaskCompleted.setOnCheckedChangeListener(null)
+
             // Define o texto e se o CheckBox está marcado
             cbTaskCompleted.text = task.title
             cbTaskCompleted.isChecked = task.isCompleted
@@ -42,13 +45,16 @@ class TaskAdapter(
                     cbTaskCompleted.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
             }
 
-            // Clique no CheckBox para marcar/desmarcar
+            // 2. LIGA o ouvinte de volta agora que tudo já foi configurado
             cbTaskCompleted.setOnCheckedChangeListener { _, isChecked ->
                 task.isCompleted = isChecked
                 onTaskCheckedChange(task)
 
-                // Atualiza o risco no texto
-                notifyItemChanged(position)
+                // 3. O PULO DO GATO: Espera o CheckBox terminar de animar para notificar o adapter
+                cbTaskCompleted.post {
+                    // Dica extra: bindingAdapterPosition é mais seguro que 'position' para animações!
+                    notifyItemChanged(holder.bindingAdapterPosition)
+                }
             }
 
             // Clique no botão de deletar

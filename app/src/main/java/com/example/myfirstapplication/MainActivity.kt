@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -54,6 +55,9 @@ class MainActivity : AppCompatActivity() {
         taskAdapter = TaskAdapter(
             tasks = taskList,
             onTaskCheckedChange = { task ->
+                if (task.isCompleted){
+                    Toast.makeText(this, "Concluído!", Toast.LENGTH_SHORT).show()
+                }
                 // Salva a lista sempre que o status de uma tarefa mudar
                 saveTasksToPreferences()
             },
@@ -98,17 +102,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun deleteTask(task: Task) {
-        val index = taskList.indexOf(task)
-        if (index != -1) {
-            taskList.removeAt(index)
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Excluir Tarefa")
+        builder.setMessage("Tem certeza que deseja excluir esta tarefa?")
+        builder.setPositiveButton("Excluir"){ dialog, _ ->
+            val index = taskList.indexOf(task)
+            if (index != -1) {
+                taskList.removeAt(index)
 
-            // Salva a lista atualizada após remover a tarefa
-            saveTasksToPreferences()
+                // Salva a lista atualizada após remover a tarefa
+                saveTasksToPreferences()
 
-            // Avisa o Adapter que o item na posição 'index' foi removido
-            taskAdapter.notifyItemRemoved(index)
-            taskAdapter.notifyItemRangeChanged(index, taskList.size)
+                // Avisa o Adapter que o item na posição 'index' foi removido
+                taskAdapter.notifyItemRemoved(index)
+                taskAdapter.notifyItemRangeChanged(index, taskList.size)
+                Toast.makeText(this, "Tarefa excluída!", Toast.LENGTH_SHORT).show()
+            }
         }
+        builder.setNegativeButton("Cancelar"){ dialog, _ ->
+            dialog.dismiss()
+        }
+        builder.show()
+
     }
 
     // --- MÉTODOS DE PERSISTÊNCIA DE DADOS ---
