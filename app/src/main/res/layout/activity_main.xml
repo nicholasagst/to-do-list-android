@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Minhas Tarefas"
+        android:text="@string/my_tasks"
         android:textSize="24sp"
         android:textStyle="bold"
         android:layout_marginBottom="16dp" />
@@ -28,7 +28,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Digite uma nova tarefa..."
+            android:hint="@string/nova_tarefa"
             android:inputType="textCapSentences" />
 
         <Button
@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Adicionar" />
+            android:text="@string/add" />
     </LinearLayout>
 
     <!-- Lista onde as tarefas vão aparecer -->
