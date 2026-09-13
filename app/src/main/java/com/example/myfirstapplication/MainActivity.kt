@@ -43,12 +43,18 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        // Carrega as tarefas salvas no dispositivo antes de exibir a tela
-        loadTasksFromPreferences()
+
+
 
         // Configura a lista e os botões
         setupRecyclerView()
         setupListeners()
+    }
+
+    override fun onResume(){
+        super.onResume()
+        // Carrega as tarefas salvas no dispositivo antes de exibir a tela
+        loadTasksFromPreferences()
     }
 
     private fun setupRecyclerView() {
@@ -90,22 +96,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun addNewTask(title: String) {
-        val newTask = Task(title = title)
-        taskList.add(newTask)
-
-        // Salva a lista atualizada no armazenamento interno do celular
-        saveTasksToPreferences()
-
-        // Avisa o Adapter que um item foi adicionado no final da lista
-        taskAdapter.notifyItemInserted(taskList.size - 1)
-
-        // Limpa o campo de texto
-        binding.etTaskTitle.text?.clear()
-
-        // Rola a lista automaticamente para o novo item
-        binding.rvTasks.smoothScrollToPosition(taskList.size - 1)
-    }
 
     private fun deleteTask(task: Task) {
         val builder = AlertDialog.Builder(this)
@@ -161,6 +151,7 @@ class MainActivity : AppCompatActivity() {
             // Limpa a lista atual e adiciona todas as tarefas restauradas
             taskList.clear()
             taskList.addAll(savedTasks)
+            taskAdapter.notifyDataSetChanged()
         }
     }
 }

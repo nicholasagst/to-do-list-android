@@ -20,29 +20,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Campo de texto para a Descrição (múltiplas linhas, ocupa todo o espaço livre restante) -->
+    <!-- Campo de texto para a Descrição (múltiplas linhas, ocupa o espaço livre restante) -->
     <EditText
         android:id="@+id/etTaskDescription"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
         android:gravity="top"
         android:hint="@string/task_description"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/btnSaveTask"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etTaskTitle" />
-
-    <!-- Botão de Salvar -->
-    <Button
-        android:id="@+id/btnSaveTask"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/save"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
