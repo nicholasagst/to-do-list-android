@@ -23,10 +23,10 @@ class AddTaskActivity : AppCompatActivity() {
             var title = binding.etTaskTitle.text.toString().trim()
             val description = binding.etTaskDescription.text.toString().trim()
 
-            if(title.isEmpty() && description.isEmpty()) {
+            if (title.isEmpty() && description.isEmpty()) {
                 Toast.makeText(this, "Digite ao menos um caracter!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
-            } else if(title.isEmpty()) {
+            } else if (title.isEmpty()) {
                 title = description.lines().first().take(50)
             }
         }
