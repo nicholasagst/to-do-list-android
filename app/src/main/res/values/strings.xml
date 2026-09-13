@@ -3,4 +3,7 @@
     <string name="nova_tarefa">Digite uma nova tarefa...</string>
     <string name="add">Adicionar</string>
     <string name="my_tasks">Minhas Tarefas</string>
+    <string name="task_title">Título da tarefa</string>
+    <string name="task_description">Descrição da tarefa</string>
+    <string name="save">Salvar</string>
 </resources>

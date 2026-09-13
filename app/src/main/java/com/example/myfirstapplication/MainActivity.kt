@@ -1,6 +1,7 @@
 package com.example.myfirstapplication
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -74,13 +75,18 @@ class MainActivity : AppCompatActivity() {
     private fun setupListeners() {
         // Configura o clique no botão "Adicionar"
         binding.btnAddTask.setOnClickListener {
-            val title = binding.etTaskTitle.text.toString().trim()
+            //1. Cria a intenção, apontando para a nova tela.
+            val intent = Intent(this, AddTaskActivity::class.java)
+            //2. Inicia a nova tela.
+            startActivity(intent)
 
-            if (title.isNotEmpty()) {
+           // val title = binding.etTaskTitle.text.toString().trim()
+
+            /*if (title.isNotEmpty()) {
                 addNewTask(title)
             } else {
                 Toast.makeText(this, "Digite o nome da tarefa!", Toast.LENGTH_SHORT).show()
-            }
+            }*/
         }
     }
 
