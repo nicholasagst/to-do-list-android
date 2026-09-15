@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // Inicializa o ViewBinding
+        // Inicializa o ViewBinding -  Criando os elementos, dando vida aos elementos da tela
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
