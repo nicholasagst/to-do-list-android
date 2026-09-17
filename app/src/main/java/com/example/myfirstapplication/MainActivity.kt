@@ -63,7 +63,8 @@ class MainActivity : AppCompatActivity() {
             tasks = taskList,
             onTaskCheckedChange = { task ->
                 if (task.isCompleted){
-                    Toast.makeText(this, "Concluído!", Toast.LENGTH_SHORT).show()
+                    //utilizado resId para seguir os padrões de uso de strings com valores ja descritos.
+                    Toast.makeText(this,R.string.done, Toast.LENGTH_SHORT).show()
                 }
                 // Salva a lista sempre que o status de uma tarefa mudar
                 saveTasksToPreferences()
@@ -112,7 +113,7 @@ class MainActivity : AppCompatActivity() {
                 // Avisa o Adapter que o item na posição 'index' foi removido
                 taskAdapter.notifyItemRemoved(index)
                 taskAdapter.notifyItemRangeChanged(index, taskList.size)
-                Toast.makeText(this, "Tarefa excluída!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.task_done, Toast.LENGTH_SHORT).show()
             }
         }
         builder.setNegativeButton("Cancelar"){ dialog, _ ->
@@ -123,6 +124,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // --- MÉTODOS DE PERSISTÊNCIA DE DADOS ---
+    //SharedPreferences
 
     private fun saveTasksToPreferences() {
         // Obtém o arquivo de preferências "task_prefs"

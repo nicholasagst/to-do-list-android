@@ -42,7 +42,9 @@ class AddTaskActivity : AppCompatActivity() {
         }
         val newTask = Task(title = title, description = description)
 
-        saveTaskToDatabase(newTask)
+        if(title.isNotEmpty() && description.isNotEmpty()){
+            saveTaskToDatabase(newTask)
+        }
 
     }
 

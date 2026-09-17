@@ -6,4 +6,6 @@
     <string name="task_title">Título da tarefa</string>
     <string name="task_description">Descrição da tarefa</string>
     <string name="save">Salvar</string>
+    <string name="done">Concluído!</string>
+    <string name="task_done">Tarefa Concluída!</string>
 </resources>
